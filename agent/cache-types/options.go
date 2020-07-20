@@ -22,6 +22,15 @@ func (r RegisterOptionsBlockingRefresh) RegisterOptions() cache.RegisterOptions 
 	}
 }
 
+type RegisterOptionsBlockingNoRefresh struct{}
+
+func (r RegisterOptionsBlockingNoRefresh) RegisterOptions() cache.RegisterOptions {
+	return cache.RegisterOptions{
+		Refresh:          false,
+		SupportsBlocking: true,
+	}
+}
+
 // RegisterOptionsNoRefresh can be embedded into a struct to implement
 // part of the agent/cache.Type interface.
 // When embedded into a struct it identifies the cache type as one which
